@@ -514,7 +514,7 @@ def _create_file_handler(site_config, config_prefix):
             # Use the default value from `datefmt`
             timestamp = site_config.get(f'{config_prefix}/datefmt')
 
-        filename = f'{basename}_{time.strftime(timestamp)}{ext}'
+        filename = f'{basename}_{_format_time_rfc3339(None, timestamp)}{ext}'
 
     append = site_config.get(f'{config_prefix}/append')
     return logging.handlers.RotatingFileHandler(filename,
